@@ -1,0 +1,49 @@
+<div class="container pt-5 mb-5">
+  <h3 class="d-flex mb-3">
+    <span class="me-auto">Categories</span>
+    <a href="#!/add-category"><button class="btn btn-sm btn-primary" style="height: 45px; padding-top: 8px;">Add New
+        Category</button></a>
+  </h3>
+  <div class="card">
+    <div class="card-header">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Filter: </span>
+        <div class="btn-group btn-group-sm" role="group">
+          <input type="radio" class="btn-check" name="filter" id="filter1" value="title" ng-model="searchType" />
+          <label class="btn btn-outline-primary" for="filter1">Title</label>
+          <input type="radio" class="btn-check" name="filter" id="filter2" value="created_on" ng-model="searchType" />
+          <label class="btn btn-outline-primary" for="filter2">Date</label>
+        </div>
+        <input type="search" class="form-control" id="filter-text" vaule="" ng-model="searchText" />
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="list in categories | searchFilter:searchType:searchText">
+          <td>{{list.id}}</td>
+          <td>{{list.title}}</td>
+          <td>{{list.created_on}}</td>
+          <td width="150px">
+
+            <div class="btn-group btn-group-sm">
+              <a href="#!edit-category"><button class="btn btn btn-success" title="Edit"
+                  style="gap: 10px; height: 37px;"><span
+                    class="material-symbols-outlined">edit</span></button></a>
+              <a href="#!"><button class="btn btn-sm btn-danger" title="Delete"
+                  style="gap: 10px; height: 37px;"><span
+                    class="material-symbols-outlined">delete</span></button></a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
